@@ -71,16 +71,12 @@ class AbogadosController extends Controller
             if (!$Abogados) {
             return response()->json(['message' => 'Abogado no encontrado'], 404);
             }
-
             // Validamos los datos ingresados
             $datos = $request->validate([
                 'nombre_abo' => ['required', 'string', 'max:100'],
-        
             ]);
-
             // Actualizar datos del abogado
             $Abogados->update($datos);
-
             // le informamos que los datos fueron actualizados
             return response()->json([
             'success' => true,
@@ -97,20 +93,15 @@ class AbogadosController extends Controller
         //{
         // Le pido que busque el id de la empresa que necesita eliminar
         $Abogados = Abogados::find($id);
-
         if (!$Abogados) {
             return response()->json(['message' => 'Abogado no encontrado'], 404);
         }
-
         // Eliminar empresa
-
         $Abogados->delete();
-
         // muestrele al cliente un mensaje indicandole que se borró correctamente
         return response()->json([
         'success' => true,
         'message' => 'Abogado eliminado correctamente'
         ], 200);
-
     }
 }

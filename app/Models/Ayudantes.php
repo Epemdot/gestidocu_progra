@@ -14,10 +14,12 @@ class Ayudantes extends Model
 
     // Define la relación con el modelo 'Abogado'
     public function abogados()
+    //defino que un ayudante debe estar asociado a un abogado particular
     {
         return $this->belongsTo(Abogados::class, 'id_abog');
     }
     public function clientes()
+    //defino que muchos clientes, pueden estar asociados a un ayudante
     {
         return $this->hasMany(Clientes::class, 'id_ayu');
     }

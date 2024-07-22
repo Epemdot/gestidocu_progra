@@ -37,7 +37,7 @@ class AyudantesController extends Controller
             //respuesta al cliente en mensaje
             return response()->json([
                 'succes' => true,
-                'message' =>'Abogado creado exitosamente',
+                'message' =>'ayudante creado exitosamente',
                 'data' => $ayudantes          
             ],201);
         }
@@ -52,11 +52,9 @@ class AyudantesController extends Controller
         //public function show($id)
     {
         $ayudantes = Ayudantes::find($id);
-
         if (!$ayudantes) {
             return response()->json(['message' => 'Ayudante no encontrado'], 404);
         }
-
         return response()->json($ayudantes, 200);
     }
 
@@ -75,20 +73,17 @@ class AyudantesController extends Controller
             if (!$ayudantes) {
             return response()->json(['message' => 'ayudante no encontrado'], 404);
             }
-
             // Validamos los datos ingresados
             $datos = $request->validate([
                 'nombre_ayu' => ['required', 'string', 'max:100'],
                 'id_abog' => ['required','exists:abogados,id']
             ]);
-
             // Actualizar datos del ayudante
             $ayudantes->update($datos);
-
             // le informamos que los datos fueron actualizados
             return response()->json([
             'success' => true,
-            'message' => 'Nombre de abogado actualizado correctamente'
+            'message' => 'Nombre de ayudante actualizado correctamente'
             ], 200);
         }
     }
@@ -102,20 +97,15 @@ class AyudantesController extends Controller
         //{
         // Le pido que busque el id de la empresa que necesita eliminar
         $ayudantes = Ayudantes::find($id);
-
         if (!$ayudantes) {
             return response()->json(['message' => 'ayudante no encontrada'], 404);
         }
-
         // Eliminar empresa
-
         $ayudantes->delete();
-
         // muestrele al cliente un mensaje indicandole que se borró correctamente
         return response()->json([
         'success' => true,
         'message' => 'Ayudante eliminado correctamente'
         ], 200);
-
     }
  }

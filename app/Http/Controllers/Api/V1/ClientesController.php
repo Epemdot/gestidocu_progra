@@ -13,7 +13,7 @@ class ClientesController extends Controller
      */
     public function index()
     {
-        return response()->json(Clientes::all(),200); //Aquí mostramos en pantalla todos los ayudantes.
+        return response()->json(Clientes::all(),200); //Aquí mostramos en pantalla todos los clientes.
         
     }
 
@@ -78,7 +78,6 @@ class ClientesController extends Controller
             if (!$clientes) {
             return response()->json(['message' => 'Clientes no encontrado'], 404);
             }
-
             // Validamos los datos ingresados
             $datos = $request->validate([
                 'nombre_cli' => ['required','string','max:100'],
@@ -86,10 +85,8 @@ class ClientesController extends Controller
                 'id_aboga' => ['required','exists:abogados,id'],
                 'id_ayu' =>['required','exists:ayudantes,id']
             ]);
-
-            // Actualizar datos del ayudante
+            // Actualizar datos del cliente
             $clientes->update($datos);
-
             // le informamos que los datos fueron actualizados
             return response()->json([
             'success' => true,
@@ -110,11 +107,8 @@ class ClientesController extends Controller
         if (!$clientes) {
             return response()->json(['message' => 'Cliente no encontrada'], 404);
         }
-
         // Eliminar empresa
-
         $clientes->delete();
-
         // muestrele al cliente un mensaje indicandole que se borró correctamente
         return response()->json([
         'success' => true,

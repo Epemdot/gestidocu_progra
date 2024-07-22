@@ -85,15 +85,12 @@ class EmpresasController extends Controller
             if (!$empresas) {
             return response()->json(['message' => 'Empresa no encontrada'], 404);
             }
-
             // Validamos los datos ingresados
             $datos = $request->validate([
                 'nombre_emp' => ['required', 'string', 'max:100']
             ]);
-
             // Actualizar datos de la empresa
             $empresas->update($datos);
-
             // le informamos que los datos fueron actualizados
             return response()->json([
             'success' => true,
@@ -107,14 +104,11 @@ class EmpresasController extends Controller
     {
         // Le pido que busque el id de la empresa que necesita eliminar
         $empresas = Empresas::find($id);
-
             if (!$empresas) {
                 return response()->json(['message' => 'Empresa no encontrada'], 404);
             }
-
             // Eliminar empresa
             $empresas->delete();
-
             // muestrele al cliente un mensaje indicandole que se borró correctamente
             return response()->json([
             'success' => true,
