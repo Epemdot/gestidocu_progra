@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Empresas;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
-class EmpresasController extends Controller
+class EmpresaController extends Controller
 {
     /**
      * Aquí mostramos en pantalla todas las empresas.
      */
     public function index()
     {
-        return response()->json(Empresas::all(),200); //Aquí mostramos en pantalla todas las empresas.
+        return response()->json(Empresa::all(),200); //Aquí mostramos en pantalla todas las empresas.
     }
 
     /**
@@ -28,7 +28,7 @@ class EmpresasController extends Controller
     ]);
 
         //guardar datos
-        $empresas = Empresas::create($datos);
+        $empresa = Empresa::create($datos);
 
         //respuesta al cliente en mensaje
         return response()->json([
@@ -50,13 +50,13 @@ class EmpresasController extends Controller
     }*/
             public function show($id)
     {
-        $empresas = Empresas::find($id);
+        $empresa = Empresa::find($id);
 
-        if (!$empresas) {
+        if (!$empresa) {
             return response()->json(['message' => 'Empresa no encontrada'], 404);
         }
 
-        return response()->json($empresas, 200);
+        return response()->json($empresa, 200);
     }
 
 
@@ -80,9 +80,9 @@ class EmpresasController extends Controller
     public function update(Request $request, $id)
     {
         // Le pido que busque el id de la empresa que necesita actualizar
-        $empresas = Empresas::find($id);
+        $empresa = Empresa::find($id);
             //condiciono que si no encuentra el numero especificado le muestre un mensaje informandolo
-            if (!$empresas) {
+            if (!$empresa) {
             return response()->json(['message' => 'Empresa no encontrada'], 404);
             }
             // Validamos los datos ingresados
@@ -90,7 +90,7 @@ class EmpresasController extends Controller
                 'nombre_emp' => ['required', 'string', 'max:100']
             ]);
             // Actualizar datos de la empresa
-            $empresas->update($datos);
+            $empresa->update($datos);
             // le informamos que los datos fueron actualizados
             return response()->json([
             'success' => true,
@@ -103,12 +103,12 @@ class EmpresasController extends Controller
     public function destroy($id)
     {
         // Le pido que busque el id de la empresa que necesita eliminar
-        $empresas = Empresas::find($id);
-            if (!$empresas) {
+        $empresa = Empresa::find($id);
+            if (!$empresa) {
                 return response()->json(['message' => 'Empresa no encontrada'], 404);
             }
             // Eliminar empresa
-            $empresas->delete();
+            $empresa->delete();
             // muestrele al cliente un mensaje indicandole que se borró correctamente
             return response()->json([
             'success' => true,

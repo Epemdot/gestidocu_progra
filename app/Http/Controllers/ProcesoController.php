@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empresas;
+use App\Models\Proceso;
 use Illuminate\Http\Request;
 
-class EmpresasController extends Controller
+class ProcesoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class EmpresasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Empresas $empresas)
+    public function show(Proceso $proceso)
     {
         //
     }
@@ -42,7 +42,7 @@ class EmpresasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Empresas $empresas)
+    public function edit(Proceso $proceso)
     {
         //
     }
@@ -50,7 +50,7 @@ class EmpresasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empresas $empresas)
+    public function update(Request $request, Proceso $proceso)
     {
         //
     }
@@ -58,7 +58,7 @@ class EmpresasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Empresas $empresas)
+    public function destroy(Proceso $proceso)
     {
         //
     }

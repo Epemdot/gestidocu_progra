@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ayudantes;
+use App\Models\Ayudante;
 use Illuminate\Http\Request;
 
-class AyudantesController extends Controller
+class AyudanteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return response()->json(Ayudantes::all(),200); //Aquí mostramos en pantalla todos los ayudantes.
+        return response()->json(Ayudante::all(),200); //Aquí mostramos en pantalla todos los ayudantes.
     }
 
     /**
@@ -32,13 +32,13 @@ class AyudantesController extends Controller
         ]);
     
             //guardar datos
-            $ayudantes = Ayudantes::create($datos);
+            $ayudante = Ayudante::create($datos);
     
             //respuesta al cliente en mensaje
             return response()->json([
                 'succes' => true,
                 'message' =>'ayudante creado exitosamente',
-                'data' => $ayudantes          
+                'data' => $ayudante          
             ],201);
         }
         }
@@ -51,11 +51,11 @@ class AyudantesController extends Controller
         public function show($id)
         //public function show($id)
     {
-        $ayudantes = Ayudantes::find($id);
-        if (!$ayudantes) {
+        $ayudante = Ayudante::find($id);
+        if (!$ayudante) {
             return response()->json(['message' => 'Ayudante no encontrado'], 404);
         }
-        return response()->json($ayudantes, 200);
+        return response()->json($ayudante, 200);
     }
 
     /**
@@ -68,9 +68,9 @@ class AyudantesController extends Controller
 
          
         // Le pido que busque el id del ayudante que necesita actualizar
-        $ayudantes = Ayudantes::find($id);
+        $ayudante = Ayudante::find($id);
             //condiciono que si no encuentra el numero especificado le muestre un mensaje informandolo
-            if (!$ayudantes) {
+            if (!$ayudante) {
             return response()->json(['message' => 'ayudante no encontrado'], 404);
             }
             // Validamos los datos ingresados
@@ -79,7 +79,7 @@ class AyudantesController extends Controller
                 'id_abog' => ['required','exists:abogados,id']
             ]);
             // Actualizar datos del ayudante
-            $ayudantes->update($datos);
+            $ayudante->update($datos);
             // le informamos que los datos fueron actualizados
             return response()->json([
             'success' => true,
@@ -96,12 +96,12 @@ class AyudantesController extends Controller
     {
         //{
         // Le pido que busque el id de la empresa que necesita eliminar
-        $ayudantes = Ayudantes::find($id);
-        if (!$ayudantes) {
+        $ayudante = Ayudante::find($id);
+        if (!$ayudante) {
             return response()->json(['message' => 'ayudante no encontrada'], 404);
         }
         // Eliminar empresa
-        $ayudantes->delete();
+        $ayudante->delete();
         // muestrele al cliente un mensaje indicandole que se borró correctamente
         return response()->json([
         'success' => true,

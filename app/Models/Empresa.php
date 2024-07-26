@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Empresas extends Model
+class Empresa extends Model
 {
     use HasFactory;
 
@@ -15,11 +15,11 @@ class Empresas extends Model
     // Aquí defino la relación entre Empresa y Abogados
     public function abogados()
     {
-        return $this->hasMany(Abogados::class, 'id_emp');  // Una empresa puede tener muchos abogados
+        return $this->hasMany(Abogado::class, 'id_emp');  // Una empresa puede tener muchos abogados
     }
     //aquí defino la relación entre Empresa y clientes
     public function clientes()
     {
-        return $this->hasMany(Clientes::class, 'id_empr'); //una empresa puede tener muchos clientes, sin que implique que depende del abogado o el ayudante o que en su caso, al eliminar un ayudante o abogado se pierda el cliente y su documentación.
+        return $this->hasMany(Cliente::class, 'id_empr'); //una empresa puede tener muchos clientes, sin que implique que depende del abogado o el ayudante o que en su caso, al eliminar un ayudante o abogado se pierda el cliente y su documentación.
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Abogados;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
-class AbogadosController extends Controller
+class EmpresaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AbogadosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Abogados $abogados)
+    public function show(Empresa $empresa)
     {
         //
     }
@@ -42,7 +42,7 @@ class AbogadosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Abogados $abogados)
+    public function edit(Empresa $empresa)
     {
         //
     }
@@ -50,7 +50,7 @@ class AbogadosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Abogados $abogados)
+    public function update(Request $request, Empresa $empresa)
     {
         //
     }
@@ -58,7 +58,7 @@ class AbogadosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Abogados $abogados)
+    public function destroy(Empresa $empresa)
     {
         //
     }

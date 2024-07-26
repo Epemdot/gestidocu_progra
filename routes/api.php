@@ -18,12 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('v1/empresas',App\Http\Controllers\Api\V1\EmpresasController::class);
+Route::apiResource('v1/empresa',App\Http\Controllers\Api\V1\EmpresaController::class);
 
-Route::apiResource('v1/abogados',App\Http\Controllers\Api\V1\AbogadosController::class);
+Route::apiResource('v1/abogado',App\Http\Controllers\Api\V1\AbogadoController::class);
 
-Route::apiResource('v1/ayudantes',App\Http\Controllers\Api\V1\AyudantesController::class);
+Route::apiResource('v1/ayudante',App\Http\Controllers\Api\V1\AyudanteController::class);
 
-Route::apiResource('v1/clientes',App\Http\Controllers\Api\V1\ClientesController::class);
+Route::apiResource('v1/cliente',App\Http\Controllers\Api\V1\ClienteController::class);
 
-Route::apiResource('v1/procesos',App\Http\Controllers\Api\V1\ProcesosController::class);
+Route::apiResource('v1/proceso',App\Http\Controllers\Api\V1\ProcesoController::class);

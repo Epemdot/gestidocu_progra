@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Clientes extends Model
+class Cliente extends Model
 {
     use HasFactory;
 
@@ -14,21 +14,21 @@ class Clientes extends Model
     public function empresa()
     //defino la relación de cada cliente, con la empresa de uno(empresa) a muchos(clientes)
     {
-        return $this->belongsTo(Empresas::class, 'id_empr');
+        return $this->belongsTo(Empresa::class, 'id_empr');
     }
     //defino la relación de cada cliente, con el abogado de uno(abogado) a muchos(clientes)
     public function abogado()
     {
-        return $this->belongsTo(Abogados::class, 'id_aboga');
+        return $this->belongsTo(Abogado::class, 'id_aboga');
     }
     //defino la relación de cada cliente, con el ayudante de uno(ayudante) a muchos(clientes)
     public function ayudante()
     {
-        return $this->belongsTo(Ayudantes::class, 'id_ayu');
+        return $this->belongsTo(Ayudante::class, 'id_ayu');
     }
     //defino la relación de cada cliente, con sus procesos de uno(cliente) a muchos(procesos)
     public function procesos()
     {
-        return $this->hasMany(Procesos::class, 'id_cli');
+        return $this->hasMany(Proceso::class, 'id_cli');
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ayudantes;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-class AyudantesController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class AyudantesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ayudantes $ayudantes)
+    public function show(Cliente $cliente)
     {
         //
     }
@@ -42,7 +42,7 @@ class AyudantesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ayudantes $ayudantes)
+    public function edit(Cliente $cliente)
     {
         //
     }
@@ -50,7 +50,7 @@ class AyudantesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ayudantes $ayudantes)
+    public function update(Request $request, Cliente $cliente)
     {
         //
     }
@@ -58,7 +58,7 @@ class AyudantesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ayudantes $ayudantes)
+    public function destroy(Cliente $cliente)
     {
         //
     }

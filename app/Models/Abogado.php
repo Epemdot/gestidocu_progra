@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Abogados extends Model
+class Abogado extends Model
 {
     use HasFactory;
 
@@ -16,16 +16,16 @@ class Abogados extends Model
     // aquí definimos la relación entre Abogado y Empresa
     public function empresa()
     {
-        return $this->belongsTo(Empresas::class,'id_emp');  // aquí voy a declarar que un abogado pertenece a una empresa
+        return $this->belongsTo(Empresa::class,'id_emp');  // aquí voy a declarar que un abogado pertenece a una empresa
     }
     //aquí voy a definir la relación entre Abogado y ayudante en una relación de uno a muchos
-    public function ayudantes()
+    public function ayudante()
     {
-        return $this->hasMany(Ayudantes::class,'id_abog');
+        return $this->hasMany(Ayudante::class,'id_abog');
     }
     //aquí voy a relacionar el abogado y los clientes, en una relación de uno a muchos
-    public function clientes()
+    public function cliente()
     {
-        return $this->hasMany(Clientes::class, 'id_aboga');
+        return $this->hasMany(Cliente::class, 'id_aboga');
     }
 }

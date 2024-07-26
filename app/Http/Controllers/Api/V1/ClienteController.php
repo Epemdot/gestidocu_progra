@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Procesos;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-class ProcesosController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-            return response()->json(Procesos::all(),200); //Aquí mostramos en pantalla todos los los procesos del cliente.    
+        return response()->json(Cliente::all(),200); //Aquí mostramos en pantalla todos los clientes.
+        
     }
 
     /**
@@ -28,19 +29,20 @@ class ProcesosController extends Controller
                 //validar datos
                 $datos = $request->validate([
                     
-                'nombre_proc' => ['required','string','max:100'],
-                'descripcion' =>['Required','string','max:300'],
-                'id_cli'=>['Required','exists:clientes,id'],
+                'nombre_cli' => ['required','string','max:100'],
+                'id_empr' =>['Required','exists:empresas,id'],
+                'id_aboga' => ['required','exists:abogados,id'],
+                'id_ayu' =>['required','exists:ayudantes,id']
             ]);
         
                 //guardar datos
-                $procesos = Procesos::create($datos);
+                $cliente = Cliente::create($datos);
         
                 //respuesta al cliente en mensaje
                 return response()->json([
                     'succes' => true,
-                    'message' =>'Proceso creado exitosamente',
-                    'data' => $procesos          
+                    'message' =>'Cliente creado exitosamente',
+                    'data' => $cliente          
                 ],201);
             }
             }
@@ -51,17 +53,17 @@ class ProcesosController extends Controller
     /**
      * Display the specified resource.
      */
-        public function show($id)
+    public function show($id)
     {
         //public function show($id)
     {
-        $procesos = Procesos::find($id);
+        $cliente = Cliente::find($id);
 
-        if (!$procesos) {
+        if (!$cliente) {
             return response()->json(['message' => 'Cliente no encontrado'], 404);
         }
 
-        return response()->json($procesos, 200);
+        return response()->json($cliente, 200);
     }
     }
 
@@ -71,23 +73,24 @@ class ProcesosController extends Controller
     public function update(Request $request, $id)
     {
         {
-            $procesos = Procesos::find($id);
+            $cliente = Cliente::find($id);
             //condiciono que si no encuentra el numero especificado le muestre un mensaje informandolo
-            if (!$procesos) {
-            return response()->json(['message' => 'proceso no encontrado'], 404);
+            if (!$cliente) {
+            return response()->json(['message' => 'Clientes no encontrado'], 404);
             }
             // Validamos los datos ingresados
             $datos = $request->validate([
-                'nombre_proc' => ['required','string','max:100'],
-                'descripcion' =>['Required','string','max:300'],
-                'id_cli'=>['Required','exists:clientes,id'],
+                'nombre_cli' => ['required','string','max:100'],
+                'id_empr' =>['Required','exists:empresas,id'],
+                'id_aboga' => ['required','exists:abogados,id'],
+                'id_ayu' =>['required','exists:ayudantes,id']
             ]);
             // Actualizar datos del cliente
-            $procesos->update($datos);
+            $cliente->update($datos);
             // le informamos que los datos fueron actualizados
             return response()->json([
             'success' => true,
-            'message' => 'procesos actualizado correctamente'
+            'message' => 'Nombre de cliente actualizado correctamente'
             ], 200);
         }
     }
@@ -99,17 +102,17 @@ class ProcesosController extends Controller
     {
         //{
         // Le pido que busque el id de la empresa que necesita eliminar
-        $procesos = Procesos::find($id);
+        $cliente = Cliente::find($id);
 
-        if (!$procesos) {
-            return response()->json(['message' => 'Proceso no encontrado'], 404);
+        if (!$cliente) {
+            return response()->json(['message' => 'Cliente no encontrada'], 404);
         }
         // Eliminar empresa
-        $procesos->delete();
+        $cliente->delete();
         // muestrele al cliente un mensaje indicandole que se borró correctamente
         return response()->json([
         'success' => true,
-        'message' => 'Proceso eliminado correctamente'
+        'message' => 'Cliente eliminado correctamente'
         ], 200);
     }
 }

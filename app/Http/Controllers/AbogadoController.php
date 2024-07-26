@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Procesos;
+use App\Models\Abogado;
 use Illuminate\Http\Request;
 
-class ProcesosController extends Controller
+class AbogadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class ProcesosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Procesos $procesos)
+    public function show(Abogado $abogado)
     {
         //
     }
@@ -42,7 +42,7 @@ class ProcesosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Procesos $procesos)
+    public function edit(Abogado $abogado)
     {
         //
     }
@@ -50,7 +50,7 @@ class ProcesosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Procesos $procesos)
+    public function update(Request $request, Abogado $abogado)
     {
         //
     }
@@ -58,7 +58,7 @@ class ProcesosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Procesos $procesos)
+    public function destroy(Abogado $abogado)
     {
         //
     }
