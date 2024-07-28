@@ -168,7 +168,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+<<<<<<< HEAD
         App\Providers\TelescopeServiceProvider::class,
+=======
+>>>>>>> 3b28d69 (comentario de prueba)
     ])->toArray(),
 
     /*
