@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[x-cloak] {
+    display: none;
+    background: linear-gradient(rgba(118, 171, 174, 0.6), rgba(118, 171, 174, 0.6)),
+                  url('/img/gestidoc.jpg') no-repeat center center;
+    background-attachment: scroll;
+    background-size: cover;
+}
