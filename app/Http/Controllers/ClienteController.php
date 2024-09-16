@@ -10,10 +10,12 @@ class ClienteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
+
+        public function index() {
+            $clientes = Cliente::all();
+            return view('dashboard', compact('clientes')); // Asegúrate de que esté en plural
+        }
+    
 
     /**
      * Show the form for creating a new resource.

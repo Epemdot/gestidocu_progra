@@ -9,6 +9,8 @@ class Cliente extends Model
 {
     use HasFactory;
 
+    protected $table = 'cliente';  // Si la tabla es singular
+
     protected $fillable = ['nombre_cli', 'id_empr', 'id_aboga', 'id_ayu'];//asignación de forma masiva para estos campos
 
     public function empresa()
@@ -30,5 +32,5 @@ class Cliente extends Model
     public function procesos()
     {
         return $this->hasMany(Proceso::class, 'id_cli');
-    }
+    }//
 }
